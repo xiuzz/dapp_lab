@@ -85,8 +85,8 @@ contract Market {
         require(price > 0, "price must be greater than 0");
         require(!isListed(tokenId), "must not listed");
         orderOfId[tokenId] = Order(from, tokenId, price);
-        if (sellerTokenLegth[from] != 0) sellerTokenLegth[from]++;
-        else sellerTokenLegth[from]= 1;
+        sellerTokenLegth[from]++;
+        
         keys.push(tokenId);
         emit NewOrder(from, tokenId, price);
         return MAGIC_ON_ERC721_RECEIVED;
