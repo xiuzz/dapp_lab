@@ -16,8 +16,8 @@ describe("Market", function() {
         let Market = await ethers.getContractFactory("Market");
         market = await Market.deploy(usdt.target, nft.target);
         
-        await nft.safeMint(accountB.address);
-        await nft.safeMint(accountB.address);
+        await nft.safeMint(accountB.address,"http://temp.com");
+        await nft.safeMint(accountB.address,"http://temp.com");
         await nft.connect(accountB).setApprovalForAll(accountA.address, true);
         // await nft.approve(market.target, 0);
         // await nft.approve(market.target, 1);

@@ -782,7 +782,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/erc721-usdt.sol": "NFTM"
+			"contracts/erc721-nft.sol": "NFTM"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -908,7 +908,7 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/erc721-usdt.sol": {
+		"contracts/erc721-nft.sol": {
 			"keccak256": "0xbedeef8cadefa5a09ccdfe80d6b290aec3194f01cd4cebabfb14e8c3b05c6105",
 			"license": "MIT",
 			"urls": [
