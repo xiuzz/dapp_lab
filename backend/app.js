@@ -1,8 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser"
-import fileuUpload from "express-fileupload";
+import fileUpload from "express-fileupload";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "./ipfs-uploader.js";
 import { mint } from "./nft-minter.js";
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config("./.env");
 
@@ -11,8 +12,8 @@ const port = process.env.PORT;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(fileuUpload());
-
+app.use(fileUpload());
+app.use(cors());
 app.get("/", (req,res) => {
     res.render("home");
 })
@@ -24,6 +25,7 @@ app.post("/upload", (req, res) => {
     const file = req.files.file;
     const filename = file.name;
     const filePath = "files/" + filename;
+    const address = req.body.address;
     file.mv(filePath,async (err) => {
         if (err) {
             console.log(err);
@@ -38,7 +40,9 @@ app.post("/upload", (req, res) => {
         }
         const metadataResult = await uploadJSONToIPFS(metadata);
         const metadataCid = metadataResult.cid.toString();
-        await mint(`${process.env.ACCOUNTADDRESS}`,`${process.env.IPFSURL}/${metadataCid}`);
+        const userAddress = address || process.env.ACCOUNTADDRESS;
+        console.log(userAddress);
+        await mint(`${userAddress}`,`${process.env.IPFSURL}/${metadataCid}`);
         res.json(
             {
                 message:"ok",

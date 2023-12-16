@@ -118,7 +118,7 @@ contract Market {
         return temp;
     }
 
-    function getMyNFTS() external view returns(Order[] memory) {
+    function getMyNFTs() external view returns(Order[] memory) {
         Order[] memory temp = new Order[](sellerTokenLegth[msg.sender]);
         uint cnt = 0;
         for (uint256 i = 0; i < keys.length; i++) {
