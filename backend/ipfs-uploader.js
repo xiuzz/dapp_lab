@@ -17,4 +17,3 @@ export async function uploadJSONToIPFS(json) {
     return res;
 }
 
-
