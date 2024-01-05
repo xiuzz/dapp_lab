@@ -18,6 +18,9 @@ export default function Navbar({walletAddress, getWalletAddress}) {
           <Link to="/">Home</Link>
         </span>
         <span>
+          <Link to="/grounding">Grounding your nft</Link>
+        </span>
+        <span>
         <Link to="/create-nft">Create NFT</Link>
           </span>
       </nav>

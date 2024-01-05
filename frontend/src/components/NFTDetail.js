@@ -14,10 +14,10 @@ const NFTDetail = () => {
   const getWalletAddress = async () => {
     if (window.ethereum) {
       try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
         return accounts[0];
       } catch (error) {
-        console.error('Error connecting to wallet:', error);
+        console.error("Error connecting to wallet:", error);
       }
     }
   };

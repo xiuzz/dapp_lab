@@ -3,7 +3,7 @@ import MyNFTABI from '../contracts/MyNFT.json';
 
 async function main() {
   let provider = new ethers.BrowserProvider(window.ethereum)
-  const contractAddress = "0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB";
+  const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
   let account = await provider.getSigner();
 
   const contract = new ethers.Contract(contractAddress, MyNFTABI, account);

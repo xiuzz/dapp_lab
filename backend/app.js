@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser"
 import fileUpload from "express-fileupload";
+import cors from "cors";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "./ipfs-uploader.js";
 import { mint } from "./nft-minter.js";
-import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config("./.env");
 

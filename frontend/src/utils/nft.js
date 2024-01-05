@@ -3,7 +3,8 @@ import ABI from '../contracts/MyNFT.json';
 import axios from 'axios';
 
 let provider = new ethers.BrowserProvider(window.ethereum)
-const contractAddress = "0xE6E340D132b5f46d1e472DebcD681B2aBc16e57E";
+const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const marketAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 const contract = new ethers.Contract(contractAddress, ABI, await provider.getSigner());
 
 export async function balanceOf(address) {
@@ -29,4 +30,13 @@ export async function getMetadata(tokenId) {
         description: response.data.description,
         imageURL: response.data.image,
     }
+}
+
+export async function groundToMarket(owner, tokenId, price) {
+    const flag = contract.ownerOf(tokenId);
+    if (flag === owner) {
+        await contract.safeTransferFrom(owner, marketAddress, tokenId, price);
+        return true;
+    }
+    else return false;
 }

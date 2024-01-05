@@ -7,13 +7,14 @@ import Navbar from './components/Navbar.js';
 import UploadSuccess from './components/UploadSuccess.js';
 import NFTGrid from './components/NFTGrid.js';
 import NFTDetail from './components/NFTDetail.js';
+import Grounding from './components/Grounding.js';
 
 function App() {
   const [walletAddress, setWallet] = useState("");
-
   useEffect(() => {
     getWalletAddress()
     addWalletListener()
+    
   },[]);
 
   function addWalletListener() {
@@ -27,7 +28,7 @@ function App() {
       });
     }   
   }
-  
+
   async function getWalletAddress() {
     if (window.ethereum) {
       try {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/success" element={<UploadSuccess />} />
           <Route path="/" element={<NFTGrid />} />
           <Route path="/nft-detail/:tokenId" element={<NFTDetail />} />
+          <Route path="/grounding" element={<Grounding owner={walletAddress}/>}/> 
         </Routes>
       </Router>
     </div> 
